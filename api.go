@@ -49,6 +49,7 @@ func (s *JSONAPIServer) handleFetchAds(ctx context.Context, w http.ResponseWrite
 }
 
 func writeJSON(w http.ResponseWriter, s int, v any) error {
+	w.Header().Add("Content-Type", "application/json")
 	w.WriteHeader(s)
 	return json.NewEncoder(w).Encode(v)
 }
